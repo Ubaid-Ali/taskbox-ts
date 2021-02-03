@@ -1,16 +1,16 @@
 import React from 'react';
 
 import Task from './Task';
-import { propsInterface } from './Task';
+import { taskPropsInterface } from './Task';
 
 export default {
   component: Task,
   title: 'Task',
 };
 
-const Template = (args: propsInterface) => <Task {...args} />;
+const Template = (args: taskPropsInterface) => <Task {...args} />;
 
-export const Default = (args: propsInterface) => <Task {...args} />;
+export const Default = (args: taskPropsInterface) => <Task {...args} />;
 Default.args = {
   task: {
     id: '1',

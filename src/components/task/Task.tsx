@@ -1,7 +1,7 @@
 import React from "react";
 
 // interface
-export interface propsInterface {
+export interface taskPropsInterface {
     task: {
         title: string;
         id: string;
@@ -12,7 +12,7 @@ export interface propsInterface {
 }
 
 // component
-const Task: React.FC<propsInterface> = ({
+const Task: React.FC<taskPropsInterface> = ({
     task: { title, id, state },
     onArchiveTask,
     onPinTask,
