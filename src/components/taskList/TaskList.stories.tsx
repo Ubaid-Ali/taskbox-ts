@@ -1,4 +1,5 @@
 import React from "react";
+import {Story, Meta} from '@storybook/react';
 
 import TaskList, { TaskListPropsInterface } from "./TaskList";
 import * as TaskStories from "../task/Task.stories";
@@ -9,9 +10,9 @@ export default {
   decorators: [
     (story: any) => <div style={{ padding: "3rem" }}>{story()}</div>, //fix later
   ],
-};
+} as Meta;
 
-const Template = (args: TaskListPropsInterface) => <TaskList {...args} />; //fix later
+const Template: Story<TaskListPropsInterface> = (args) => <TaskList {...args} />; //fix later
 
 export const Default: any = Template.bind({}); //fix later
 Default.args = {
@@ -25,7 +26,7 @@ Default.args = {
   ],
 };
 
-export const WithPinnedTasks = Template.bind<any>({}); //fix later
+export const WithPinnedTasks = Template.bind({}); //fix later
 WithPinnedTasks.args = {
   tasks: [
     ...Default.args.tasks.slice(0, 5),
@@ -33,13 +34,13 @@ WithPinnedTasks.args = {
   ],
 };
 
-export const Loading = Template.bind<any>({});
+export const Loading = Template.bind({});
 Loading.args = {
   tasks: [],
   loading: true,
 };
 
-export const Empty = Template.bind<any>({});
+export const Empty = Template.bind({});
 Empty.args = {
   ...Loading.args,
   loading: false,
