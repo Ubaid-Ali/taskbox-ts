@@ -1,5 +1,5 @@
 import React from "react";
-import {Story, Meta} from '@storybook/react';
+import { Story, Meta } from '@storybook/react';
 
 import TaskList, { TaskListPropsInterface } from "./TaskList";
 import * as TaskStories from "../task/Task.stories";
