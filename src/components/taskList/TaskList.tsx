@@ -1,16 +1,22 @@
 import React from "react";
 
 import Task from "../task/Task";
-import { taskPropsInterface } from "../task/Task";
+
+import { TaskInterface } from '../../interfaces/Task.interface'
+
+import { connect } from 'react-redux';
+import { archiveTask, pinTask } from '../../lib/redux';
+import { TaskListInterface } from "../../interfaces/TaskListInterface";
+
 
 export interface TaskListPropsInterface {
     loading: boolean;
-    tasks: any[];
+    tasks: TaskInterface[];
     onPinTask: any;
     onArchiveTask: any;
 }
 
-const TaskList: React.FC<TaskListPropsInterface> = ({
+export const PureTaskList: React.FC<TaskListPropsInterface> = ({
     loading,
     tasks,
     onPinTask,
@@ -27,7 +33,7 @@ const TaskList: React.FC<TaskListPropsInterface> = ({
             <span className="glow-text">
                 <span>Loading</span>
                 <span>cool</span>
-                <span>state</span>
+                <span>staTaskInterface[]te</span>
             </span>
         </div>
     );
@@ -58,8 +64,8 @@ const TaskList: React.FC<TaskListPropsInterface> = ({
     }
 
     const tasksInOrder = [
-        ...tasks.filter((tsk) => tsk.state === "TASK_PINNED"),
-        ...tasks.filter((tsk) => tsk.state !== "TASK_PINNED"),
+        ...tasks.filter((tsk: TaskInterface) => (tsk.state === "TASK_PINNED")),
+        ...tasks.filter((tsk: TaskInterface) => (tsk.state !== "TASK_PINNED")),
     ];
 
     return (
@@ -71,4 +77,17 @@ const TaskList: React.FC<TaskListPropsInterface> = ({
     );
 };
 
-export default TaskList;
+PureTaskList.defaultProps = {
+    loading: false,
+};
+
+// // // // // // // // // // // // 
+export default connect(
+    ({ tasks }: any) => ({
+        tasks: tasks.filter((t: any) => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED'),
+    }),
+    dispatch => ({
+        onArchiveTask: (id: any) => dispatch(archiveTask(id)),
+        onPinTask: (id: any) => dispatch(pinTask(id)),
+    })
+)(PureTaskList);
