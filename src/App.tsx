@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <Provider store={store} >
-        <PureInboxScreen />
+        <PureInboxScreen {...PureInboxScreen.arguments}/>
       </Provider>
     </div>
   );

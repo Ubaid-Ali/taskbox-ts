@@ -5,7 +5,6 @@ import { action } from '@storybook/addon-actions';
 
 import { PureInboxScreen, inboxScreenPropsInterface } from './InboxScreen';
 import * as TaskListStories from '../taskList/TaskList.stories';
-import { Store } from 'redux';
 
 const store = {
     getState: () => {
