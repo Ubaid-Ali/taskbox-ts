@@ -41,7 +41,7 @@ const Task: React.FC<taskPropsInterface> = ({
 
             <div className="actions" onClick={(event) => event.stopPropagation()}>
                 {state !== "TASK_ARCHIVED" && (
-                    <a onClick={() => onPinTask(id)} href="#">
+                    <a onClick={() => onPinTask(id)} href="#top">
                         <span className={`icon-star`} />
                     </a>
                 )}
