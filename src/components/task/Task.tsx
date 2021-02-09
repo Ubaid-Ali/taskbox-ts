@@ -3,12 +3,13 @@ import React from "react";
 // interface
 export interface taskPropsInterface {
     task: {
-        title: string;
-        id: string;
+        title?: string;
+        id?: string;
         state: string;
+        updatedAt?: string
     };
-    onArchiveTask: any;
-    onPinTask: any;
+    onArchiveTask?: any;
+    onPinTask?: any;
 }
 
 // component
@@ -40,7 +41,7 @@ const Task: React.FC<taskPropsInterface> = ({
 
             <div className="actions" onClick={(event) => event.stopPropagation()}>
                 {state !== "TASK_ARCHIVED" && (
-                    <a onClick={() => onPinTask(id)} href="https://google.com">
+                    <a onClick={() => onPinTask(id)} href="#">
                         <span className={`icon-star`} />
                     </a>
                 )}

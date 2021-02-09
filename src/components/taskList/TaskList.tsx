@@ -10,7 +10,7 @@ import { archiveTask, pinTask } from '../../lib/redux';
 
 export interface TaskListPropsInterface {
     loading: boolean;
-    tasks: TaskInterface[];
+    tasks: TaskInterface[] | [];
     onPinTask: any;
     onArchiveTask: any;
 }
@@ -79,7 +79,7 @@ export const PureTaskList: FC<TaskListPropsInterface> = ({
 // 
 export default connect(
     ({ tasks }: any) => ({
-        tasks: tasks.filter((t: TaskInterface) => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED'),
+        tasks: tasks.filter((t: TaskInterface) => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED')
     }),
     dispatch => ({
         onArchiveTask: (id: string) => dispatch(archiveTask(id)),

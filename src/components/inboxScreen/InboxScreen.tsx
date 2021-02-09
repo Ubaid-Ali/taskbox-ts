@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import TaskList, { PureTaskList } from '../taskList/TaskList';
 
 export interface inboxScreenPropsInterface {
-    error: string
+    error?: string
 }
 
-export const PureInboxScreen: FC<inboxScreenPropsInterface> = ({ error }) => { // any? fix later
+export const PureInboxScreen: FC<inboxScreenPropsInterface> = ({ error }) => {
     if (error) {
         return (
             <div className="page lists-show" >
