@@ -29,7 +29,7 @@ Pinned.args = {
   },
 };
 
-export const Archived = Template.bind<any>({});
+export const Archived = Template.bind({});
 Archived.args = {
   task: {
     ...Default.args.task,
